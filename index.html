@@ -37,13 +37,11 @@
    <body>
       <!-- header section start -->
       <header class="header_section">
-         <img 
-            
-            srcset="images/banner_website_mobile_540_960.webp 768w, images/banner_website_HD.webp 1200w" 
-            sizes="(max-width: 768px) 100vw, 1200px" 
-            alt="Banner" 
-            loading="lazy" 
-            />
+         <picture>
+            <source media="(min-width: 769px)" srcset="images/banner_website_HD.webp" />
+            <source media="(max-width: 768px)" srcset="images/banner_website_mobile_540_960.webp" />
+            <img src="images/banner_website_mobile_540_960.webp" alt="Banner" class="header_bg" loading="lazy" />
+          </picture>
 
      
             <div class="container-fluid container-fluid-navbar">
