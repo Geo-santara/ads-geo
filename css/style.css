@@ -313,41 +313,45 @@ button {
     background-size: 100% 100%;
     background-repeat: no-repeat;
 } */
+ 
 .header_section {
+    position: relative; /* supaya child absolute bisa full */
     width: 100%;
     min-height: 90vh; /* Default desktop */
-    background-image: url('../images/banner_website_HD.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    overflow: hidden; /* supaya image yang absolute gak keluar container */
+}
+
+/* Background image jadi elemen img dengan kelas header_bg */
+.header_bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1; /* biar di belakang konten */
 }
 
 /* Tablet dan HP besar */
 @media (max-width: 768px) {
     .header_section {
-        /* min-height: 75vh; */
-        background-image: url('../images/banner_website_mobile_540_960.webp');
-        background-size: cover;         /* Tambahkan ini */
-        background-position: center;    /* Tambahkan ini */
+        min-height: 75vh; /* kalau mau ubah tinggi di mobile */
+    }
+
+    .header_bg {
+        object-position: center;
     }
 }
 
 /* HP kecil (di bawah 480px) */
 @media (max-width: 480px) {
     .header_section {
-        /* min-height: 70vh; */
-        background-image: url('../images/banner_website_mobile_540_960.webp');
-        background-size: cover;
-        background-position: center center; /* Fokus tengah */
-        /* Atau coba: */
-        background-position: 50% 40%; /* Atur manual pakai persen */
+        min-height: 70vh; /* bisa sesuaikan */
     }
-}s
 
-
-
-.header_bg {
-    background: #1f1f1f;
+    .header_bg {
+        object-position: 50% 40%; /* sesuaikan fokus gambar */
+    }
 }
 
 .bg-light {
