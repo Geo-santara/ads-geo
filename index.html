@@ -37,18 +37,10 @@
    <body>
       <!-- header section start -->
       <header class="header_section">
-         <picture>
-            <!-- untuk layar minimal 769px (desktop) -->
+         <picture class="header_bg">
             <source media="(min-width: 769px)" srcset="images/banner_website_HD.webp" />
-            <!-- untuk layar maksimal 768px (tablet dan hp besar) -->
             <source media="(max-width: 768px)" srcset="images/banner_website_mobile_540_960.webp" />
-            <!-- fallback gambar (bisa kecil atau sama dengan mobile) -->
-            <img 
-              src="images/banner_website_mobile_540_960.webp" 
-              alt="Banner" 
-              class="header_bg" 
-              loading="lazy"
-            />
+            <img src="images/banner_website_mobile_540_960.webp" alt="Banner" loading="lazy" />
           </picture>
      
             <div class="container-fluid container-fluid-navbar">
