@@ -368,7 +368,7 @@
                <div class="row">
                   <div class="col-md-6">
                      <div class="form-wrapper-round">
-                        <form id="contactForm" novalidate>
+                        <form id="contactForm" novalidate action="https://formspree.io/f/xyzwakbj" method="POST">
                            <div class="mail_section_1-round">
                              <input id="name" name="name" type="text" class="mail_text-round" placeholder="Name" />
                              <div id="nameError" style="color:red; font-size:0.9em;"></div>
@@ -578,31 +578,7 @@
       
             return valid;
          }
-      
-         document.getElementById("contactForm").addEventListener("submit", async function(e) {
-            e.preventDefault();
-      
-            if (!validateForm()) {
-               return; // Kalau validasi gagal, jangan lanjut kirim email
-            }
-      
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
-      
-            try {
-               const res = await fetch("/api/send-email", {
-                 method: "POST",
-                 headers: { "Content-Type": "application/json" },
-                 body: JSON.stringify(data),
-               });
-      
-               const result = await res.json();
-               document.getElementById("status").innerText = result.message || result.error;
-            } catch (error) {
-               document.getElementById("status").innerText = "Terjadi kesalahan saat mengirim.";
-               console.error(error);
-            }
-         });
+   
       </script>
       
    
