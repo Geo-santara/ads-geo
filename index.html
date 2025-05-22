@@ -368,17 +368,27 @@
                <div class="row">
                   <div class="col-md-6">
                      <div class="form-wrapper-round">
-                        <form id="contactForm" action="send_email.php" method="POST" onsubmit="return validateForm()">
+                        <form id="contactForm" novalidate>
                            <div class="mail_section_1-round">
-                              <input type="text" class="mail_text-round" placeholder="Name" name="name">
-                              <input type="text" class="mail_text-round" placeholder="Phone Number" name="phone_number"> 
-                              <input type="text" class="mail_text-round" placeholder="Email" name="email">
-                              <textarea class="massage-bt-round" placeholder="Message" rows="5" id="comment" name="message"></textarea>
-                              <button class="email-button-round" type="submit">
-                                 <i class="fa-solid fa-envelope"></i> Kirim Email
-                              </button> 
+                             <input id="name" name="name" type="text" class="mail_text-round" placeholder="Name" />
+                             <div id="nameError" style="color:red; font-size:0.9em;"></div>
+                         
+                             <input id="phone_number" name="phone_number" type="text" class="mail_text-round" placeholder="Phone Number" />
+                         
+                             <input id="email" name="email" type="email" class="mail_text-round" placeholder="Email" />
+                             <div id="emailError" style="color:red; font-size:0.9em;"></div>
+                         
+                             <textarea id="message" name="message" class="massage-bt-round" placeholder="Message" rows="5"></textarea>
+                             <div id="messageError" style="color:red; font-size:0.9em;"></div>
+                         
+                             <button class="email-button-round" type="submit">
+                               <i class="fa-solid fa-envelope"></i> Kirim Email
+                             </button> 
                            </div>
                         </form>
+                         
+                         <div id="status" style="margin-top:10px; color:green;"></div>
+                         
                      </div>
                   </div>
                   <div class="col-md-6 padding_left_15">
@@ -535,21 +545,21 @@
       <script>
          function validateForm() {
             let valid = true;
-
-            // Reset error messages
+      
+            // Reset error messages (pastikan elemen ini ada di HTML)
             document.getElementById("nameError").innerText = "";
             document.getElementById("emailError").innerText = "";
             document.getElementById("messageError").innerText = "";
-
+      
             // Validate Name
-            const name = document.getElementById("name").value;
+            const name = document.getElementById("name").value.trim();
             if (name === "") {
                document.getElementById("nameError").innerText = "Nama tidak boleh kosong.";
                valid = false;
             }  
-
+      
             // Validate Email
-            const email = document.getElementById("email").value;
+            const email = document.getElementById("email").value.trim();
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             if (email === "") {
                document.getElementById("emailError").innerText = "Email tidak boleh kosong.";
@@ -558,36 +568,42 @@
                document.getElementById("emailError").innerText = "Email tidak valid.";
                valid = false;
             }
-
+      
             // Validate Message
-            const message = document.getElementById("message").value;
+            const message = document.getElementById("message").value.trim();
             if (message === "") {
                document.getElementById("messageError").innerText = "Pesan tidak boleh kosong.";
                valid = false;
             }
-
+      
             return valid;
          }
-   </script>
-   <script>
-      document.getElementById("contactForm").addEventListener("submit", async function(e) {
-        e.preventDefault();
       
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData.entries());
+         document.getElementById("contactForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
       
-        const res = await fetch("/api/send-email", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+            if (!validateForm()) {
+               return; // Kalau validasi gagal, jangan lanjut kirim email
+            }
       
-        const result = await res.json();
-        document.getElementById("status").innerText = result.message || result.error;
-      });
-   </script>
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+      
+            try {
+               const res = await fetch("/api/send-email", {
+                 method: "POST",
+                 headers: { "Content-Type": "application/json" },
+                 body: JSON.stringify(data),
+               });
+      
+               const result = await res.json();
+               document.getElementById("status").innerText = result.message || result.error;
+            } catch (error) {
+               document.getElementById("status").innerText = "Terjadi kesalahan saat mengirim.";
+               console.error(error);
+            }
+         });
+      </script>
       
    
    <script>
