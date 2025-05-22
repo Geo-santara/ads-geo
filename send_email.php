@@ -19,14 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'deva.adzany00@gmail.com';         // 🔁 Ganti dengan email kamu
-        $mail->Password   = 'swci jfze kekp upkx';           // 🔁 Ganti dengan App Password (bukan password biasa)
+        $mail->Username   = 'ptgeosantaraindonesia@gmail.com';         // 🔁 Ganti dengan email kamu
+        $mail->Password   = 'gywx ulmr kwnn epos';           // 🔁 Ganti dengan App Password (bukan password biasa)
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
 
         // Penerima
-        $mail->setFrom('deva.adzany00@gmail.com', 'Website Geo');
-        $mail->addAddress('deva.adzany00@gmail.com');        // 🔁 Ganti tujuan email
+        $mail->setFrom('ptgeosantaraindonesia@gmail.com', 'Web-Geo');
+        $mail->addAddress('ptgeosantaraindonesia@gmail.com');        // 🔁 Ganti tujuan email
 
         // Konten
         $mail->isHTML(false);
