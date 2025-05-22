@@ -475,7 +475,6 @@ button {
     font-weight: bold;
     padding-bottom: 0px;
     line-height: 40px;
-    font-family: 'Poppins', sans-serif;
 }
 
 .banner_text {
@@ -484,9 +483,11 @@ button {
     font-size: 16px;
     color: #ffffff;
     margin-left: 0px;
-    font-family: 'Poppins', sans-serif;
 }
-
+.preload-visible {
+    font-display: swap;
+    font-weight: 600;
+  }
 .btn_main {
     width: 100%;
     display: flex;
