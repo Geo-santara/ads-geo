@@ -2,14 +2,6 @@
 
 
 /*--------------------------------------------------------------------- import Fonts ---------------------------------------------------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-@font-face {
-    font-family: "Righteous";
-    src: url("../fonts/BalooChettan-Regular.ttf");
-    font-display: swap;
-}
 
 
 /*****---------------------------------------- 1) font-family: 'Rajdhani', sans-serif;
@@ -18,18 +10,18 @@
 
 
 /*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
-
+/* 
 @import url(animate.min.css);
 @import url(normalize.css);
 @import url(icomoon.css);
 @import url(css/font-awesome.min.css);
 @import url(meanmenu.css);
-/* @import url(owl.carousel.min.css); */
+@import url(owl.carousel.min.css);
 @import url(swiper.min.css);
 @import url(slick.css);
 @import url(jquery.fancybox.min.css);
 @import url(jquery-ui.css);
-@import url(nice-select.css);
+@import url(nice-select.css); */
 
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
 
